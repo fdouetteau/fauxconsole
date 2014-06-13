@@ -22,7 +22,7 @@
     var consoleDiv, consoleContent;
     
     //check existence of console
-    if (typeof window.console === 'undefined' || typeof window.console.log === 'undefined') {
+    if (true ) {
         consoleDiv = createElement('div', { className: 'fauxconsole' });
 
         consoleDiv.appendChild(createElement('a', { href: 'javascript:console.hide()' }, 'hide'));
@@ -33,9 +33,8 @@
         consoleDiv.appendChild(consoleContent);
 
         (document.body || document.documentElement).appendChild(consoleDiv);
-        hide();
 
-        window.console = {
+        window.console1 = {
             show: function show() { 
                 consoleDiv.style.display = 'block'; 
             },
@@ -53,45 +52,7 @@
             }
             
         };
+        window.console1.hide();
     }
     
-    if (typeof window.console.debug === 'undefined') {
-        window.console.debug = window.console.log;
-    }
-    
-    if (typeof window.console.info === 'undefined') {
-        window.console.info = window.console.log;
-    }
-    
-    if (typeof window.console.warn === 'undefined') {
-        window.console.warn = window.console.log;
-    }
-    
-    if (typeof window.console.error === 'undefined') {
-        window.console.error = window.console.log;
-    }
-    
-    if (typeof window.console.assert === 'undefined') {
-        window.console.assert = function assert() {
-            if (!arguments[0]) {
-                if (arguments[1]) {
-                    window.console.log(arguments[1]);
-                } else {
-                    window.console.log('Assertion failed');
-                }
-            }
-        };
-    }
-    
-    if (typeof window.console.show === 'undefined') {
-        window.console.show = function () {};
-    }
-    
-    if (typeof window.console.hide === 'undefined') {
-        window.console.hide = function () {};
-    }
-    
-    if (typeof window.console.clear === 'undefined') {
-        window.console.clear = function () {};
-    }
-}(window, window.console, 'fauxconsole'));
+}(window));
